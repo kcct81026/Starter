@@ -34,6 +34,7 @@ struct MovieListResult: Codable {
         self.totalPages = totalPages
         self.totalResults = totalResults
     }
+    
     static func empty() -> MovieListResult {
         MovieListResult(dates: nil, page: nil, results: nil, totalPages: nil, totalResults: nil)
     }
@@ -46,7 +47,7 @@ struct Dates: Codable {
 
 // MARK: - MovieResult
 struct MovieResult: Codable, Hashable {
-    let adult: Bool?
+    public let adult: Bool?
     let backdropPath: String?
     let genreIDS: [Int]?
     let id: Int?
@@ -80,7 +81,7 @@ struct MovieResult: Codable, Hashable {
         
     }
     
-    init(adult:Bool?,backdropPath: String?, genreIDS: [Int]?, id: Int?, originalLanguage: String?, originalTitle: String?,originalName : String?, overview:String?, popularity: Double?,posterPath:String?, releaseDate:String?,title:String?, firstAirDate: String?, video:Bool?, voteAverage: Double?, voteCount:Int?, media_type: String = ContentType.MovieType.rawValue, runtime: Int?){
+    init(adult:Bool?,backdropPath: String?, genreIDS: [Int]?, id: Int?, originalLanguage: String?, originalTitle: String?,originalName : String?, overview:String?, popularity: Double?,posterPath:String?, releaseDate:String?,title:String?, firstAirDate: String?, video:Bool?, voteAverage: Double?, voteCount:Int?, media_type: String, runtime: Int?){
         self.adult = adult
         self.backdropPath = backdropPath
         self.genreIDS = genreIDS
@@ -123,6 +124,32 @@ struct MovieResult: Codable, Hashable {
         entity.mediaType = media_type
         entity.addToBelongsToType(groupTye)
         return entity
+    }
+ 
+    func toMovieObject(groupType : BelongsToTypeObject) -> MovieResultObject {
+        let object = MovieResultObject()
+        object.adult  = adult
+        object.backdropPath = backdropPath
+        object.genreIDS = genreIDS?.map { String($0)}.joined(separator: ",")
+        object.id = id
+        object.runtime = runtime
+        object.originalLanguage = originalLanguage
+        object.originalTitle  = originalTitle
+        object.originalName  = originalName
+        object.overview = overview
+        object.popularity = popularity
+        object.posterPath = posterPath
+        object.releaseDate  = releaseDate
+        object.firstAirDate  = firstAirDate
+        object.title = title
+        object.video = video
+        object.voteAverage = voteAverage
+        object.voteCount = voteCount
+        object.media_type = media_type
+        object.belongsToType.append(groupType)
+
+        
+        return object
     }
     
     

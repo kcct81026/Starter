@@ -10,8 +10,14 @@ target 'Starter' do
   pod 'Alamofire', '~> 5.5'
   pod 'SDWebImage', '~> 5.0'
   pod 'YouTubePlayer'
+
+  # Pods for MyRealmProject
+  pod 'RealmSwift', '~>10'
+
   pod 'RxSwift', '6.5.0'
   pod 'RxCocoa', '6.5.0'
   pod 'RxAlamofire'
+  pod "RxRealm"
   pod 'RxDataSources', '~> 5.0'
+
 end

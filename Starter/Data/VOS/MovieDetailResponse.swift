@@ -12,6 +12,7 @@
 
 import Foundation
 import CoreData
+import RealmSwift
 // MARK: - MovieDetailResponse
 struct MovieDetailResponse: Codable {
     
@@ -89,7 +90,7 @@ struct MovieDetailResponse: Codable {
     @discardableResult
     func toMovieEntity(context: NSManagedObjectContext) -> MovieEntity{
         let entity = MovieEntity(context: context)
-        entity.id = Int32(id ?? 0)
+        entity.id = Int32(id!)
         entity.adult = adult ?? false
         entity.backdropPath = backdropPath
         var genreListStr = ""
@@ -143,11 +144,6 @@ struct MovieDetailResponse: Codable {
         )
     }
     
-    
-    static func empty() -> MovieDetailResponse{
-        return MovieDetailResponse(adult: nil, backdropPath: nil, belongsToCollection: nil, budget: nil, genres: nil, homepage: nil, id: nil, imdbID: nil, originalLanguage: nil, originalTitle: nil, overview: nil, popularity: nil, posterPath: nil, productionCompanies: nil, productionCountries: nil, releaseDate: nil, revenue: nil, runtime: nil, spokenLanguages: nil, status: nil, tagline: nil, title: nil, video: nil, voteAverage: nil, voteCount: nil)
-    }
-    
    
     
 }
@@ -166,6 +162,7 @@ struct BelongsToCollection: Codable {
 
 // MARK: - ProductionCompany
 struct ProductionCompany: Codable {
+    
     let id: Int?
     let logoPath, name, originCountry: String?
 
@@ -175,6 +172,7 @@ struct ProductionCompany: Codable {
         case name
         case originCountry = "origin_country"
     }
+
     
     func toMovieProductonCompany(conext: NSManagedObjectContext) -> ProductionCompanyEntity{
         let entity = ProductionCompanyEntity(context: conext)
@@ -191,6 +189,7 @@ struct ProductionCompany: Codable {
 
 // MARK: - ProductionCountry
 public struct ProductionCountry: Codable {
+    
     public let iso3166_1, name: String?
 
     enum CodingKeys: String, CodingKey {

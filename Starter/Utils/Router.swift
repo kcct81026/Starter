@@ -33,7 +33,8 @@ extension UIViewController{
     }
     
     func navigateToSearchContentViewController(){
-        let vc = SearchMovieViewController()
+        //let vc = SearchMovieViewController()
+        let vc = RxSearchViewController()
         self.navigationController?.pushViewController(vc, animated: true)
         //present(vc, animated: true, completion: nil)
     }

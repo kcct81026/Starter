@@ -27,10 +27,6 @@ public struct ActorListResponse: Codable{
         self.totalPages = totalPages
         self.totalResults = totalResults
     }
-    
-    static func empty()-> ActorListResponse{
-        return ActorListResponse(dates: nil, page: nil, results: nil, totalPages: nil, totalResults: nil)
-    }
 }
 
 public struct ActorInfoResponse : Codable{
@@ -69,10 +65,13 @@ public struct ActorInfoResponse : Codable{
         entity.homepage = ""
         entity.birthday = ""
         entity.biography = ""
-        //entity.addToCredits(groupTye)
         return entity
     }
     
-   
+    
+    
+    func toMovieCasts()-> MovieCast{
+        return MovieCast(adult: adult, gender: gender, id: id, knownForDepartment: nil, name: name, originalName: name, popularity: popularity, profilePath: profilePath, castID: id, character: nil, creditID: "", order: nil, department: nil, job: nil)
+    }
     
 }

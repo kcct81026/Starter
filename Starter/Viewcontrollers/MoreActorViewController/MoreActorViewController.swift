@@ -25,16 +25,13 @@ class MoreActorViewController: UIViewController, ActorActionDelegate {
         super.viewDidLoad()
 
         initView()
-        initState()
+        //initState()
         fetchPopularPeople(page: currentPage)
 
     }
     
     private func initState(){
         
-        currentPage =  1
-        data.append(contentsOf: initData ?? [ActorInfoResponse]())
-        collectionViewActors.reloadData()
     }
     
     private func initView(){
@@ -70,7 +67,7 @@ class MoreActorViewController: UIViewController, ActorActionDelegate {
             guard let self = self else { return }
             switch result{
             case .success(let resultData):
-                self.data.append(contentsOf: resultData )
+                self.data.append(contentsOf: resultData.results ?? [ActorInfoResponse]())
                 //  UI update
                 self.totalPages = self.actorModel.totalPageActorList
                 self.collectionViewActors.reloadData()
@@ -118,7 +115,7 @@ extension MoreActorViewController: UICollectionViewDataSource, UICollectionViewD
         navigateToMovieDetailViewController(movieId: item.id ?? 0, contentType: ContentType.ActorType.rawValue)
     }
     
-    func collectionView(_ collectionView: UICollectionView,willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath){
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let isAtLastRow = indexPath.row == (data.count - 1)
         let haveMorePage = currentPage < totalPages //  9, 10 => page 10 => fetchData(page 10)
         if isAtLastRow && haveMorePage{
@@ -127,6 +124,5 @@ extension MoreActorViewController: UICollectionViewDataSource, UICollectionViewD
         }
     }
     
-   
     
 }

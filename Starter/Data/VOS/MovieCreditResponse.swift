@@ -18,13 +18,10 @@ struct MovieCreditResponse: Codable {
         self.cast = cast
         self.crew = crew
     }
-    static func isEmpty() -> MovieCreditResponse{
-        return MovieCreditResponse(id: nil, cast: nil, crew: nil)
-    }
 }
 
 // MARK: - Cast
-struct MovieCast: Codable{
+struct MovieCast: Codable {
     
     let adult: Bool?
     let gender, id: Int?
