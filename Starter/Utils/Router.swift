@@ -25,15 +25,21 @@ extension UIViewController{
         guard let vc = UIStoryboard.mainStoryBoard().instantiateViewController(identifier: MovieDetailViewController.identifer) as? MovieDetailViewController else {return}
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .flipHorizontal
-        vc.movieID = movieId
-        vc.type = contentType
+        let viewModel = MovieDetailsViewModel()
+        viewModel.movieID = movieId
+        viewModel.type = contentType
+        vc.viewModel = viewModel
         self.navigationController?.pushViewController(vc, animated: true)
         //present(vc, animated: true)
         
     }
     
     func navigateToSearchContentViewController(){
+<<<<<<< Updated upstream
         let vc = SearchMovieViewController()
+=======
+        let vc = RxSearchViewController()
+>>>>>>> Stashed changes
         self.navigationController?.pushViewController(vc, animated: true)
         //present(vc, animated: true, completion: nil)
     }

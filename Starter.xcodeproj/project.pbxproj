@@ -70,6 +70,15 @@
 		849E4FCE282ABC7F0025DB33 /* ActorDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E4FCD282ABC7F0025DB33 /* ActorDetailRepository.swift */; };
 		849EE19927B176E60094A0AD /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849EE19827B176E60094A0AD /* MovieDetailViewController.swift */; };
 		849EE1A227B182670094A0AD /* Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849EE1A127B182670094A0AD /* Basic.swift */; };
+<<<<<<< Updated upstream
+=======
+		849F34A02836A1F300D228E2 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F349F2836A1F300D228E2 /* MovieViewModel.swift */; };
+		849F34A22836AA4500D228E2 /* SearchMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F34A12836AA4500D228E2 /* SearchMovieViewModel.swift */; };
+		849F34A62836ACFF00D228E2 /* RxSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F34A42836ACFF00D228E2 /* RxSearchViewController.swift */; };
+		849F34A72836ACFF00D228E2 /* RxSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849F34A52836ACFF00D228E2 /* RxSearchViewController.xib */; };
+		849F34A92836B87200D228E2 /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F34A82836B87200D228E2 /* MovieDetailsViewModel.swift */; };
+		849F34AB2836D0B900D228E2 /* MovieDetailsViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F34AA2836D0B900D228E2 /* MovieDetailsViewModelType.swift */; };
+>>>>>>> Stashed changes
 		84A0680C282D1DB70058F7B1 /* SeriesDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0680B282D1DB70058F7B1 /* SeriesDetailRepository.swift */; };
 		84B58F6927E327F2007F669E /* MDBEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B58F6827E327F2007F669E /* MDBEndpoint.swift */; };
 		84B5F32027DA6011005732E1 /* NetworkingAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5F31F27DA6011005732E1 /* NetworkingAgent.swift */; };
@@ -172,6 +181,15 @@
 		849E4FCD282ABC7F0025DB33 /* ActorDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorDetailRepository.swift; sourceTree = "<group>"; };
 		849EE19827B176E60094A0AD /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		849EE1A127B182670094A0AD /* Basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Basic.swift; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
+=======
+		849F349F2836A1F300D228E2 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
+		849F34A12836AA4500D228E2 /* SearchMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieViewModel.swift; sourceTree = "<group>"; };
+		849F34A42836ACFF00D228E2 /* RxSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSearchViewController.swift; sourceTree = "<group>"; };
+		849F34A52836ACFF00D228E2 /* RxSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RxSearchViewController.xib; sourceTree = "<group>"; };
+		849F34A82836B87200D228E2 /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
+		849F34AA2836D0B900D228E2 /* MovieDetailsViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModelType.swift; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 		84A0680B282D1DB70058F7B1 /* SeriesDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailRepository.swift; sourceTree = "<group>"; };
 		84B58F6827E327F2007F669E /* MDBEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDBEndpoint.swift; sourceTree = "<group>"; };
 		84B5F31F27DA6011005732E1 /* NetworkingAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingAgent.swift; sourceTree = "<group>"; };
@@ -272,6 +290,10 @@
 		8434599627B38C21004E3F9F /* Viewcontrollers */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< Updated upstream
+=======
+				849F34A32836ACD600D228E2 /* RxSearchContent */,
+>>>>>>> Stashed changes
 				849E4FBE282A67EE0025DB33 /* MovieController */,
 				84CB501F27E3B9CA00A6122A /* MoreShowCaseViewController */,
 				84CB501E27E3B9AD00A6122A /* YouTubePlayerViewController */,
@@ -428,6 +450,7 @@
 			sourceTree = "<group>";
 		};
 		849E4FBE282A67EE0025DB33 /* MovieController */ = {
+<<<<<<< Updated upstream
 			isa = PBXGroup;
 			children = (
 				843B5C4427B3FCD700E646A0 /* MovieViewController.swift */,
@@ -443,6 +466,43 @@
 				849EE1A127B182670094A0AD /* Basic.swift */,
 			);
 			path = Fundamental;
+=======
+			isa = PBXGroup;
+			children = (
+				843B5C4427B3FCD700E646A0 /* MovieViewController.swift */,
+				849E4FBF282A68B90025DB33 /* MovieViewSection.swift */,
+				849E4FC3282A71CD0025DB33 /* MovieDataSource.swift */,
+			);
+			path = MovieController;
+			sourceTree = "<group>";
+		};
+		849EE1A027B181CD0094A0AD /* Fundamental */ = {
+			isa = PBXGroup;
+			children = (
+				849EE1A127B182670094A0AD /* Basic.swift */,
+			);
+			path = Fundamental;
+			sourceTree = "<group>";
+		};
+		849F349E2836A1AF00D228E2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				849F349F2836A1F300D228E2 /* MovieViewModel.swift */,
+				849F34A12836AA4500D228E2 /* SearchMovieViewModel.swift */,
+				849F34A82836B87200D228E2 /* MovieDetailsViewModel.swift */,
+				849F34AA2836D0B900D228E2 /* MovieDetailsViewModelType.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		849F34A32836ACD600D228E2 /* RxSearchContent */ = {
+			isa = PBXGroup;
+			children = (
+				849F34A42836ACFF00D228E2 /* RxSearchViewController.swift */,
+				849F34A52836ACFF00D228E2 /* RxSearchViewController.xib */,
+			);
+			path = RxSearchContent;
+>>>>>>> Stashed changes
 			sourceTree = "<group>";
 		};
 		84B5F31E27DA5FFF005732E1 /* Networking */ = {
@@ -635,6 +695,7 @@
 				843B5C4F27B41E4C00E646A0 /* Components */,
 				843459A127B38E2C004E3F9F /* Delegate */,
 				843B5C4627B3FEB300E646A0 /* Resource */,
+				849F349E2836A1AF00D228E2 /* ViewModels */,
 				8434599627B38C21004E3F9F /* Viewcontrollers */,
 				8434599727B38C92004E3F9F /* Storyboards */,
 				8434599B27B38D0F004E3F9F /* Cells */,
@@ -749,6 +810,10 @@
 				84E7757527B55C1D0050F9B7 /* GenreCollectionViewCell.xib in Resources */,
 				84788F3427E0E35A008E4AD8 /* YouTubePlayerViewController.xib in Resources */,
 				84DABBA3279B3750003B304C /* Assets.xcassets in Resources */,
+<<<<<<< Updated upstream
+=======
+				849F34A72836ACFF00D228E2 /* RxSearchViewController.xib in Resources */,
+>>>>>>> Stashed changes
 				84E7757127B558DE0050F9B7 /* GenereTableViewCell.xib in Resources */,
 				843B5C5D27B44B4200E646A0 /* MovieShowTimeTableViewCell.xib in Resources */,
 				84DABBA1279B374F003B304C /* Main.storyboard in Resources */,
@@ -813,6 +878,10 @@
 				84E7F47927E25A970087C19E /* MoreShowCaseViewController.swift in Sources */,
 				849E4FC4282A71CD0025DB33 /* MovieDataSource.swift in Sources */,
 				849EE19927B176E60094A0AD /* MovieDetailViewController.swift in Sources */,
+<<<<<<< Updated upstream
+=======
+				849F34A02836A1F300D228E2 /* MovieViewModel.swift in Sources */,
+>>>>>>> Stashed changes
 				849E4FCC282ABC260025DB33 /* DetailModel.swift in Sources */,
 				843B5C4527B3FCD700E646A0 /* MovieViewController.swift in Sources */,
 				84538D1628243A2B002AA9B8 /* WatchListRepository.swift in Sources */,
@@ -827,6 +896,7 @@
 				849E4FCE282ABC7F0025DB33 /* ActorDetailRepository.swift in Sources */,
 				84788F3D27E124E1008E4AD8 /* MoreActorViewController.swift in Sources */,
 				8482DFB127EB803F00B82B43 /* ProductinCompanyEntityExtension.swift in Sources */,
+				849F34A62836ACFF00D228E2 /* RxSearchViewController.swift in Sources */,
 				8482DFB727EBB92800B82B43 /* ActorEntityExtension.swift in Sources */,
 				843B5C5827B43EF600E646A0 /* PopularFilmCollectionViewCell.swift in Sources */,
 				8422F59327EA29E2009F0F47 /* ActorRespository.swift in Sources */,
@@ -834,6 +904,7 @@
 				848BBEE727EAD91A00FB86A6 /* ContentTypeRepository.swift in Sources */,
 				849E4FB5282A50510025DB33 /* RxNetworkAgent.swift in Sources */,
 				8422F58B27EA1FA9009F0F47 /* MovieDB.xcdatamodeld in Sources */,
+				849F34AB2836D0B900D228E2 /* MovieDetailsViewModelType.swift in Sources */,
 				8422F59627EA4670009F0F47 /* GenreEntityExtension.swift in Sources */,
 				84A0680C282D1DB70058F7B1 /* SeriesDetailRepository.swift in Sources */,
 				844B15DE27E486AB004FD559 /* BaseModel.swift in Sources */,
@@ -863,6 +934,7 @@
 				84CB501127E39F3C00A6122A /* MovieDBNetworkAgentWithURLSession.swift in Sources */,
 				84B5F32B27DA6281005732E1 /* MovieListResult.swift in Sources */,
 				843B5C5127B41EC800E646A0 /* RatingControl.swift in Sources */,
+				849F34A22836AA4500D228E2 /* SearchMovieViewModel.swift in Sources */,
 				84B5F32227DA61B4005732E1 /* AppConstants.swift in Sources */,
 				8454C98427B63E1D00CF7FC6 /* MoviewItemDelegate.swift in Sources */,
 				84E7757427B55C1D0050F9B7 /* GenreCollectionViewCell.swift in Sources */,
@@ -877,6 +949,7 @@
 				844B15DA27E4829E004FD559 /* SearchMovieModel.swift in Sources */,
 				8422F59127EA293B009F0F47 /* GenreRepository.swift in Sources */,
 				84B5F32027DA6011005732E1 /* NetworkingAgent.swift in Sources */,
+				849F34A92836B87200D228E2 /* MovieDetailsViewModel.swift in Sources */,
 				8454C98227B634B900CF7FC6 /* MovieType.swift in Sources */,
 				84DABB9C279B374F003B304C /* SceneDelegate.swift in Sources */,
 				849E4FC6282AB1020025DB33 /* TestDetail.swift in Sources */,
@@ -1033,6 +1106,10 @@
 				DEVELOPMENT_TEAM = P6PZVAFPL5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Starter/Info.plist;
+<<<<<<< Updated upstream
+=======
+				INFOPLIST_KEY_CFBundleDisplayName = MVVMStarter;
+>>>>>>> Stashed changes
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1064,6 +1141,10 @@
 				DEVELOPMENT_TEAM = P6PZVAFPL5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Starter/Info.plist;
+<<<<<<< Updated upstream
+=======
+				INFOPLIST_KEY_CFBundleDisplayName = MVVMStarter;
+>>>>>>> Stashed changes
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

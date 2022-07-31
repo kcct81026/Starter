@@ -31,6 +31,10 @@ protocol DetailModel {
     
     func saveActorDetailObservable(id: Int) ->  Observable<ActorDetailResponse>
     func saveMovieDetailObservable(id: Int) ->  Observable<MovieDetailResponse>
+<<<<<<< Updated upstream
+=======
+    func saveSeriesDetailObservable(id: Int) ->  Observable<MovieDetailResponse>
+>>>>>>> Stashed changes
     
     func saveMovieDetail(id: Int)
     func saveActorDetail(id: Int)
@@ -39,8 +43,11 @@ protocol DetailModel {
 }
 
 class DetailModelImpl: BaseModel, DetailModel {
+<<<<<<< Updated upstream
    
     
+=======
+>>>>>>> Stashed changes
 
     let disposeBag = DisposeBag()
     
@@ -145,6 +152,36 @@ class DetailModelImpl: BaseModel, DetailModel {
       
     }
     
+<<<<<<< Updated upstream
+=======
+    func saveSeriesDetailObservable(id: Int) -> Observable<MovieDetailResponse> {
+        var result : MovieDetailResponse?
+        
+        return RxNetworkAgent.shared.getSereisDetailById(id: id)
+            .do(onNext: { data in
+                result = data.toMovieDetailResponse()
+                self.movieRespository.saveDetail(data: data.toMovieDetailResponse())
+                })
+                .catchAndReturn(MovieDetailResponse.empty().toSeriesDetailResonse())
+                    .flatMap{ _ ->  Observable<MovieDetailResponse> in
+                        return Observable.create{ (observer) -> Disposable in
+                            if result?.id != nil {
+                                observer.onNext(result ?? MovieDetailResponse.empty())
+                                observer.onCompleted()
+                            }
+                            else{
+                                self.movieRespository.getDetail(id: id){
+                                    observer.onNext($0 ?? MovieDetailResponse.empty())
+                                    observer.onCompleted()
+                                }
+
+                            }
+                return Disposables.create()
+            }
+        }
+    }
+    
+>>>>>>> Stashed changes
     
     func saveMovieDetailObservable(id: Int) ->  Observable<MovieDetailResponse>  {
         var result : MovieDetailResponse?

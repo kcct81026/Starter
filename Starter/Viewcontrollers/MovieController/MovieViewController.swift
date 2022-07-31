@@ -18,6 +18,7 @@ class MovieViewController: UIViewController, MovieItemDelegate, MoreActorDelegae
     @IBOutlet weak var tableViewMovies: UITableView!
     
     //MARK: - Property
+<<<<<<< Updated upstream
     private let movieModel          = MovieModelImpl.shared
     private let seriesModel : SeriesModel = SeriesModelImpl.shared
     private let actorModel : ActorModel = ActorModelImpl.shared
@@ -43,11 +44,17 @@ class MovieViewController: UIViewController, MovieItemDelegate, MoreActorDelegae
     
     
     private let rxmovieModel        = RxMovieModelImpl.shared
+=======
+    private let disposeBag = DisposeBag()
+
+    var viewModel: MovieViewModel!
+>>>>>>> Stashed changes
     
     //MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+<<<<<<< Updated upstream
         initView()
         initObservable()
         initObservers()
@@ -130,12 +137,26 @@ class MovieViewController: UIViewController, MovieItemDelegate, MoreActorDelegae
 
         rxmovieModel.getGenreList()
             .subscribe(onNext: { self.observableGenreList.accept($0) })
+=======
+        viewModel = MovieViewModel()
+        
+        initView()
+        bindData()
+        viewModel.fetchAllData()
+
+    }
+    
+    private func bindData(){
+        viewModel.homeItemList
+            .bind(to: tableViewMovies.rx.items(dataSource: initDataSource()))
+>>>>>>> Stashed changes
             .disposed(by: disposeBag)
     }
     
     //MARK: Init View
     private func initView(){
         self.navigationItem.backBarButtonItem = UIBarButtonItem()
+<<<<<<< Updated upstream
         
       
         registerTableViewCell()
@@ -148,6 +169,11 @@ class MovieViewController: UIViewController, MovieItemDelegate, MoreActorDelegae
     
     
     
+=======
+        registerTableViewCell()
+    }
+    
+>>>>>>> Stashed changes
     private func registerTableViewCell(){
         //tableViewMovies.dataSource = self
         tableViewMovies.registerForCell(identifier: MovieSliderTableViewCell.identifier)
@@ -162,8 +188,11 @@ class MovieViewController: UIViewController, MovieItemDelegate, MoreActorDelegae
         navigateToSearchContentViewController()
         
     }
+<<<<<<< Updated upstream
 
     
+=======
+>>>>>>> Stashed changes
    
     //MARK: Tap Item
     func onTapMoreShowCases(data: [MovieResult]) {
@@ -175,7 +204,10 @@ class MovieViewController: UIViewController, MovieItemDelegate, MoreActorDelegae
         navigateToMoreActorsViewController(data: data)
     }
 
+<<<<<<< Updated upstream
     
+=======
+>>>>>>> Stashed changes
     func onTapMovie(id: Int, type: String){
         navigateToMovieDetailViewController(movieId: id, contentType: type)
 

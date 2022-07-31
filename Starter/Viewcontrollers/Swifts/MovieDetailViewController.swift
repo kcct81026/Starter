@@ -11,9 +11,12 @@ import RxCocoa
 import RxDataSources
 import RxSwift
 import CoreData
+<<<<<<< Updated upstream
+=======
+import Combine
+>>>>>>> Stashed changes
 
 class MovieDetailViewController: UIViewController,ActorActionDelegate, MovieItemDelegate{
-    
     
     //MARK: - IBOutlet
     @IBOutlet weak var stackViewTime: UIStackView!
@@ -48,6 +51,7 @@ class MovieDetailViewController: UIViewController,ActorActionDelegate, MovieItem
 
     
     //MARK: - Property
+<<<<<<< Updated upstream
     private let movieModel : MovieModel = MovieModelImpl.shared
     private let seriesModel : SeriesModel = SeriesModelImpl.shared
     private let actorModel : ActorModel = ActorModelImpl.shared
@@ -68,20 +72,42 @@ class MovieDetailViewController: UIViewController,ActorActionDelegate, MovieItem
     private var similarMovies : BehaviorSubject<[MovieResult]> = BehaviorSubject(value: [])
     
     //private var objects = Array.init(repeating: "Hello", count: 10000000)
+=======
+    private let disposeBag = DisposeBag()
+    private var productionCompanies : [ProductionCompany] = []
+    
+    //private var objects = Array.init(repeating: "Hello", count: 10000000)
+    
+    var viewModel : MovieDetailViewModelType!
+    private var cancellables = Set<AnyCancellable>()
+
+>>>>>>> Stashed changes
 
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+   
         
         
         fetchDetails()
         initView()
+<<<<<<< Updated upstream
 
+=======
+        bindViewState()
+
+        viewModel.setupData()
+        viewModel.fetchDetails()
+>>>>>>> Stashed changes
         addCollectionViewCastsBindingObserver()
         addCastItemSelectedObserver()
         addSimilarMoiveItemSelectedObserver()
         similarMovieCollectionViewBindingObserver()
+<<<<<<< Updated upstream
         initData()
+=======
+
+>>>>>>> Stashed changes
 
             
     }
@@ -150,6 +176,7 @@ class MovieDetailViewController: UIViewController,ActorActionDelegate, MovieItem
         
     }
     
+<<<<<<< Updated upstream
     deinit{
         print("This object is released!")
         if type == ContentType.MovieType.rawValue{
@@ -161,18 +188,51 @@ class MovieDetailViewController: UIViewController,ActorActionDelegate, MovieItem
         else{
             detailModel.deinitActorResultController()
         }
+=======
+    private func bindViewState(){
+        viewModel.viewState
+            .eraseToAnyPublisher()
+            .print()
+            .sink{ [weak self] (state) in
+                guard let self = self else { return }
+                switch state {
+                case .addedBookMark:
+                    self.imgBookMark.image = UIImage(systemName: "bookmark.fill")
+                    break
+                case .removeBookMark:
+                    self.imgBookMark
+                        .image = UIImage(systemName: "bookmark")
+                    break
+                case .bindActorData(let data):
+                    self.bindActorData(data: data)
+                case .bindMovieData(let data):
+                    self.bindData(data: data)
+                case .bindSeriesData(let data):
+                    self.bindSeriesData(data: data)
+                }
+            }.store(in: &cancellables)
+    }
+
+   
+    
+    deinit{
+        print("This object is released!")
+        viewModel.deinitFetchController()
+
+>>>>>>> Stashed changes
     }
         
     //MARK: - Init View
     private func initView(){
         initGestureRecoginizer()
-        btnRateMovie.layer.borderColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        btnRateMovie.layer.borderColor =   UIColor.white.cgColor
         btnRateMovie.layer.borderWidth = 2
         btnRateMovie.layer.cornerRadius = 20
         imgBookMark.isUserInteractionEnabled = true
         imgBookMark.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBookMark)))
         registerCollectionViewCell()
         
+<<<<<<< Updated upstream
         if type == ContentType.ActorType.rawValue {
             imgBookMark.isHidden = true
         }
@@ -239,17 +299,27 @@ class MovieDetailViewController: UIViewController,ActorActionDelegate, MovieItem
 
    
 
+=======
     }
     
+    @objc func onTapBookMark(){
+        viewModel.toggleWatched()
+>>>>>>> Stashed changes
+    }
+    
+ 
     @IBAction func onClickPlayTrailer(_ sender : UIButton){
-        
-        if type == ContentType.ActorType.rawValue{
+        if viewModel.type == ContentType.ActorType.rawValue{
             if let dataURL = URL(string: "https://www.google.com") {
                 UIApplication.shared.open(dataURL)
             }
         }
         else{
+<<<<<<< Updated upstream
             let item = movieTrailers.first
+=======
+            let item = viewModel.movieTrailers.first
+>>>>>>> Stashed changes
             let youtubeId = item?.key
             let playerVC = YouTubePlayerViewController()
             playerVC.youtubeId = youtubeId
@@ -259,10 +329,12 @@ class MovieDetailViewController: UIViewController,ActorActionDelegate, MovieItem
     }
     
     func onTapMovie(id: Int, type: String) {
-        navigateToMovieDetailViewController(movieId: id, contentType: type)
+        navigateToMovieDetailViewController(movieId: viewModel.movieID, contentType: viewModel.type)
 
     }
+
     
+<<<<<<< Updated upstream
     //MARK: - API CALL
     private func fetchMovieTrailer(id: Int){
         movieModel.getMovieTrailerVideo(id: id) { [weak self] (result) in
@@ -387,8 +459,67 @@ class MovieDetailViewController: UIViewController,ActorActionDelegate, MovieItem
                 cell.data = element
                 
             }
+=======
+    private func addCollectionViewCastsBindingObserver() {
+        // Bind Data to collection view cell
+        viewModel.movieCasts
+            .bind(to: collectionViewActors.rx.items(
+                    cellIdentifier: String(describing: ActorCollectionViewCell.self),
+                    cellType: ActorCollectionViewCell.self))
+            { [weak self] (row, element, cell) in
+                guard let self = self else { return }
+
+                cell.delegate = self
+                let item: MovieCast = element
+                cell.data = item.convertToActorInfoResponse()
+
+            }
             .disposed(by: disposeBag)
     }
+    
+    private func addCastItemSelectedObserver() {
+        // On Item Selected
+        collectionViewActors.rx.itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                guard let self = self else { return }
+                let items = try! self.viewModel.movieCasts.value()
+                let item = items[indexPath.row]
+
+                self.navigateToMovieDetailViewController(movieId: item.id ?? 0, contentType: ContentType.ActorType.rawValue)
+
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func similarMovieCollectionViewBindingObserver() {
+        // Bind Data to collection view cell
+        viewModel.similarMovies
+            .bind(to: collectionViewSimilarContents.rx.items(
+                    cellIdentifier: String(describing: PopularFilmCollectionViewCell.self),
+                    cellType: PopularFilmCollectionViewCell.self))
+            {  (row, element, cell) in
+                cell.data = element
+
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func addSimilarMoiveItemSelectedObserver() {
+        // On Item Selected
+        collectionViewSimilarContents.rx.itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                guard let self = self else { return }
+                let items = try! self.viewModel.similarMovies.value()
+                let item = items[indexPath.row]
+                self.navigateToMovieDetailViewController(movieId: item.id ?? 0, contentType: item.media_type ?? ContentType.MovieType.rawValue)
+
+            })
+>>>>>>> Stashed changes
+            .disposed(by: disposeBag)
+    }
+
+
+
     
     private func addSimilarMoiveItemSelectedObserver() {
         // On Item Selected
@@ -455,7 +586,9 @@ class MovieDetailViewController: UIViewController,ActorActionDelegate, MovieItem
         
         buttonPlay.setTitle("Read More", for: .normal)
         buttonPlay.setImage(UIImage(named: "navigator.png"),for: .normal)
-        url = data.homepage ?? ""
+        //url = data.homepage ?? ""
+        
+        imgBookMark.isHidden = true
         
         
 
@@ -526,6 +659,8 @@ class MovieDetailViewController: UIViewController,ActorActionDelegate, MovieItem
         
         labelAboutMovieDescription.text = data.overview
         labelRelaeaseDate.text = data.firstAirDate
+        
+        self.buttonPlay.isHidden = viewModel.movieTrailers.isEmpty && viewModel.type != ContentType.ActorType.rawValue
 
         
     }
@@ -593,6 +728,8 @@ class MovieDetailViewController: UIViewController,ActorActionDelegate, MovieItem
         
         labelAboutMovieDescription.text = data.overview
         labelRelaeaseDate.text = data.releaseDate
+                
+        self.buttonPlay.isHidden = viewModel.movieTrailers.isEmpty && viewModel.type != ContentType.ActorType.rawValue
 
         
     }
@@ -615,6 +752,7 @@ class MovieDetailViewController: UIViewController,ActorActionDelegate, MovieItem
         debugPrint("Favorite tap \(isFavorite)")
     }
     
+<<<<<<< Updated upstream
     private func fetchDetails(){
         if type == ContentType.MovieType.rawValue{
             detailModel.saveMovieDetailObservable(id: movieID)
@@ -640,6 +778,9 @@ class MovieDetailViewController: UIViewController,ActorActionDelegate, MovieItem
         
 
     }
+=======
+   
+>>>>>>> Stashed changes
    
 
 }

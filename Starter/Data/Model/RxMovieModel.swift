@@ -65,6 +65,18 @@ class RxMovieModelImpl: BaseModel, RxMovieModel {
     }
     
     func getPopularMovieList() -> Observable<[MovieResult]>  {
+<<<<<<< Updated upstream
+=======
+        
+//        networkAgent.getPopularSeriesList(){ result in
+//            switch result{
+//            case .success(let data):
+//                print("success \(data.results?.count)")
+//            case .failure(let message):
+//                print("error \(message)")
+//            }
+//        }
+>>>>>>> Stashed changes
 
         let contentType : MovieSerieGroupType = .popularMovies
         var result = [MovieResult]()
